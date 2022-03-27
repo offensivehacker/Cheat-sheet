@@ -38,10 +38,27 @@ nmap -sC -sV <target>
 # All ports, scripts, version
 nmap -sC -sV -p- <target>
 
+-p
+This would make your scan slow compared to the default (fast) scan, but you would get a much better idea of the open ports available on the target machine!
+
 # UDP and Version check
 nmap -sU -sV <target>
 
 # Most used scan
 # OS, version, scripts, traceroute, and all ports
 nmap -A -p- <target>
-```
+
+# Find the host name of the scanned machine
+cat /etc/hosts
+
+# Nmap script to determine information about the NoSQL database (MongoDB).
+nmap -p27017 --script=mongodb-info target-2 | less
+OR 
+nmap -p27017 --script=mongodb-databases target-2
+
+# Nmap script to perform brute force password auditing against the MongoDB database
+nmap -p27017 --script=mongodb-brute target-2
+
+# Nmap script to determine information about the SQL database (MySQL).
+run all scripts related to MySQL
+nmap --script=mysql-* target-1
