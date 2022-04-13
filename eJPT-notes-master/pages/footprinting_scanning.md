@@ -1,4 +1,4 @@
-# Footprinting & Scanning
+]# Footprinting & Scanning
 
 This is the infrastrucutre part of the information gathering.
 
@@ -30,7 +30,9 @@ Port scanning allows for discvoery of running daemons and services of each node 
 
 ```
 # TCP SYN scan or stealth scan
-nmap -Ss <target>
+nmap -Ss -sU<target>
+
+-sU (UDP)
 
 # Scripts and version detection
 nmap -sC -sV <target>
@@ -47,6 +49,7 @@ nmap -sU -sV <target>
 # Most used scan
 # OS, version, scripts, traceroute, and all ports
 nmap -A -p- <target>
+-A (SCAN FOR EVERTHING)
 
 # Find the host name of the scanned machine
 cat /etc/hosts

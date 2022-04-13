@@ -59,13 +59,22 @@ nmblookup -A <target>
 
 # Smbclient can do the same as NET VIEW but it also displays administrative shares that are hidden when using Windows standard tools
 smbclient -L //<target> -N (list shares without asking for password)
+<00> = wORKSTARION
+<20> = File sharing service is up and running
+UNIQUE = ONLY ONE ip
+
 smbclient //<target>/share -N (mount share)
 smbclient //ip/share -U %PASS (Connect to the share)
+smb: \> get nameofthefile.txt (Download files )
+
 
 # enum4linux is very powerful PERL script that can be used to enumerate Windows shares
-enum4linux -a <target>
+enum4linux -a <target> ()
+enum4linux -U <target> (Enumerate users)
+enum4linux -s ~/Desktop/wordlists/100-common-passwords.txt demo.ine.local (bruteforce the share names using the specified wordlist)
 
 # SMBMAP
+NOTE: SMBMAP DOES NOT SHOW ALL THE USERS. USE enumb4linux to find the hidden users
 smbmap -H IP
 smbmap -R SHARE -H IP -A NAMEOFTHEFILE (Download files from a share)
 
@@ -75,7 +84,8 @@ crackmapexec -h
 Look at different permissions
 crackmapexec smb IP --shares
 
-
+# Null Attack (Establish a connection to IPC$ share without user and password.)
+Only works on IPC$ 
 
 
 ```
@@ -129,11 +139,13 @@ Basic workflow to exploit a target using MSFConsole:
 - Running the exploit code and getting access to the vulnerable machine
 
 ```
+Update MSF
+apt  update ; apt install metasploit-framework
+
 # Start MSF SQL dATABASE
 service postgresql start
 
-Update MSF
-apt  update ; apt install metasploit-framework
+
 
 # Starts up metasploit console
 msfconsole
