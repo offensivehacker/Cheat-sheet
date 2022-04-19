@@ -2,6 +2,8 @@
 
 This is the infrastrucutre part of the information gathering.
 
+nmap -A -T4 -p- <targetip>
+
 ### Mapping a network
 
 Mapping a network helps the pentester get an idea of how the network is structured.
