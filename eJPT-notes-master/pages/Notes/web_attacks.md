@@ -52,6 +52,9 @@ Enumeration of files and directories can lead to many hidden resources that coul
 # Dirb is a great tool to use for directory/file brute forcing
 dirb http://<target>
 
+Use Username and Password 
+dirb http://172.16.64.140/project -u admin:admin
+
 # Gobuster is another directory/file scanner written in Go
 gobuster -u <target> -w <path to wordlist> -o <file to output to>
 ```

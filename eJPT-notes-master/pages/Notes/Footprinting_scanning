@@ -46,3 +46,5 @@ nmap -sU -sV <target>
 # Most used scan
 # OS, version, scripts, traceroute, and all ports
 nmap -A -p- <target>
+
+# save the nmap output

