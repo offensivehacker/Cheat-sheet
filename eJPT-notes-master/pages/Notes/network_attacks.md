@@ -324,3 +324,33 @@ is a meterpreter command for privilege escalation. It uses pre-defined methods t
 4 : Named Pipe Impersonation (RPCSS variant)
 
 ### CURL
+
+### FTP
+Login into FTP using IP address
+ftp IP_ADDRESS
+
+Login into FTP using domain name
+ftp --passive DOMAIN_NAME
+
+Upload a file to FTP server
+put SHELL.TXT
+
+Download a file from FTP server
+mget *
+
+Upload a file from FTP server terminal
+mput LOCAL_FILE_NAME
+
+
+
+From the FTP server terminal, check the local working directory
+lpwd
+
+From the FTP server terminal,check the local working directory
+!ls
+
+From the FTP server terminal, change the working direcorty
+lcd
+
+Off interactive mode in FTP
+prompt
