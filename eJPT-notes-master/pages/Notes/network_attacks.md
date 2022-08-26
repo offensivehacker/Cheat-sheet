@@ -327,30 +327,28 @@ is a meterpreter command for privilege escalation. It uses pre-defined methods t
 
 ### FTP
 Login into FTP using IP address
-    ftp IP_ADDRESS
+ftp IP_ADDRESS
 
 Login into FTP using domain name
-    ftp --passive DOMAIN_NAME
+ftp --passive DOMAIN_NAME
 
 Upload a file to FTP server
-    put SHELL.TXT
+put SHELL.TXT
 
 Download a file from FTP server
-    mget *
+mget *
 
 Upload a file from FTP server terminal
-    mput LOCAL_FILE_NAME
-
-
+mput LOCAL_FILE_NAME
 
 From the FTP server terminal, check the local working directory
-    lpwd
+lpwd
 
 From the FTP server terminal,check the local working directory
-    !ls
+!ls
 
 From the FTP server terminal, change the working direcorty
-    lcd
+lcd
 
 Off interactive mode in FTP
-    prompt
+prompt
